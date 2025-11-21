@@ -9,26 +9,28 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #0a0a0a;
     color: white;
+    overflow-x: hidden;
 }
 
 /* HEADER */
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: black;
+    padding: 15px 20px;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: black;
-    padding: 15px 20px;
     border-bottom: 2px solid red;
-    position: sticky;
-    top: 0;
 }
 
 .logo {
     font-size: 24px;
-    color: red;
     font-weight: bold;
+    color: red;
 }
 
 .hamburger {
@@ -37,22 +39,23 @@ header {
     color: white;
 }
 
-/* MENU */
+/* NAV MENU */
 nav {
     display: none;
     flex-direction: column;
-    background: black;
-    position: absolute;
-    top: 70px;
+    background: rgba(0,0,0,0.95);
+    position: fixed;
+    top: 60px;
     right: 20px;
     border: 1px solid red;
     border-radius: 10px;
+    z-index: 1001;
 }
 
 nav a {
-    padding: 12px;
-    text-decoration: none;
+    padding: 12px 20px;
     color: white;
+    text-decoration: none;
     font-weight: bold;
 }
 
@@ -60,49 +63,64 @@ nav a:hover {
     color: red;
 }
 
-/* TABS */
+/* FULL SCREEN TABS */
 .tab-content {
+    width: 100vw;
+    height: 100vh;
     display: none;
-    padding: 50px 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-/* VISIBLE TAB */
+.tab-content h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+/* ACTIVE TAB */
 .active {
-    display: block !important;
+    display: flex !important;
 }
 
-/* TITLES */
-h1 {
-    color: red;
-}
+/* KLEUREN PER TAB */
+#home { background: #1abc9c; }
+#blog { background: #3498db; }
+#socials { background: #9b59b6; }
+#countdown { background: #e67e22; }
+#shop { background: #e74c3c; }
+#contact { background: #2ecc71; }
 
-/* SHOP */
+/* SHOP ITEMS */
 .product {
-    background: #111;
-    border: 2px solid red;
-    border-radius: 6px;
+    background: rgba(0,0,0,0.4);
+    margin: 10px auto;
     padding: 20px;
-    margin: 15px auto;
-    max-width: 350px;
+    border-radius: 10px;
+    max-width: 400px;
+    font-size: 22px;
 }
 
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: black;
-    border-top: 2px solid red;
+/* SOCIALS LINKS */
+.socials a {
+    color: white;
+    font-size: 24px;
+    margin: 0 15px;
+    text-decoration: none;
 }
+.socials a:hover { color: red; }
+
 </style>
-
 </head>
+
 <body>
 
 <header>
     <div class="logo">SUPERMOTO LIFE</div>
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-
     <nav id="menu">
         <a onclick="openTab('home')">Home</a>
         <a onclick="openTab('blog')">Blog</a>
@@ -113,34 +131,31 @@ footer {
     </nav>
 </header>
 
-<!-- HOME TAB -->
+<!-- FULL SCREEN TABS -->
 <div id="home" class="tab-content active">
     <h1>Welkom bij Supermoto Life</h1>
     <p>Dé lifestyle site voor supermoto riders 🔥</p>
 </div>
 
-<!-- BLOG TAB -->
 <div id="blog" class="tab-content">
     <h1>Blog</h1>
     <p>🔥 Nieuwe posts binnenkort online!</p>
-    <p>Hier kan je veel tekst toevoegen.</p>
 </div>
 
-<!-- SOCIALS TAB -->
 <div id="socials" class="tab-content">
-    <h1>Volg Ons</h1>
-    <p><a href="#" style="color:white;">Instagram</a></p>
-    <p><a href="#" style="color:white;">TikTok</a></p>
-    <p><a href="#" style="color:white;">YouTube</a></p>
+    <h1>Socials</h1>
+    <div class="socials">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">YouTube</a>
+    </div>
 </div>
 
-<!-- COUNTDOWN TAB -->
 <div id="countdown" class="tab-content">
     <h1>Event Countdown</h1>
     <h2 id="timer">Loading...</h2>
 </div>
 
-<!-- SHOP TAB -->
 <div id="shop" class="tab-content">
     <h1>Shop</h1>
     <div class="product">🔥 Supermoto Handschoenen – €49</div>
@@ -148,15 +163,10 @@ footer {
     <div class="product">🔥 Sticker Pack – €15</div>
 </div>
 
-<!-- CONTACT TAB -->
 <div id="contact" class="tab-content">
     <h1>Contact</h1>
-    <p>Mail ons: <br><strong>supermoto@life.com</strong></p>
+    <p>Email: <strong>supermoto@life.com</strong></p>
 </div>
-
-<footer>
-    © 2025 Supermoto Life
-</footer>
 
 <script>
 /* HAMBURGER MENU */
@@ -165,37 +175,30 @@ function toggleMenu() {
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 
-/* OPEN TABS */
+/* OPEN TAB */
 function openTab(tabName) {
     let tabs = document.getElementsByClassName("tab-content");
-
-    // Hide all tabs
     for (let t of tabs) {
         t.classList.remove("active");
     }
-
-    // Show selected
     document.getElementById(tabName).classList.add("active");
-
-    // Close menu after click
-    document.getElementById("menu").style.display = "none";
+    document.getElementById("menu").style.display = "none"; // sluit menu
 }
 
 /* COUNTDOWN TIMER */
 let targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
-
 setInterval(function () {
     let now = new Date().getTime();
     let distance = targetDate - now;
 
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    let days = Math.floor(distance / (1000*60*60*24));
+    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    let seconds = Math.floor((distance % (1000*60)) / 1000);
 
     document.getElementById("timer").innerHTML =
         days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-});
+}, 1000);
 </script>
 
 </body>
