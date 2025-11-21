@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supermoto Lifestyle</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Header / Navigatie -->
+<header>
+    <h1>Supermoto Lifestyle</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">Over ons</a>
+        <a href="#gallery">Galerij</a>
+        <a href="#contact">Contact</a>
+        <a href="#socials">Socials</a>
+    </nav>
+</header>
+
+<!-- Home Sectie -->
+<section id="home" class="section hero">
+    <h2>Welkom bij Supermoto Lifestyle</h2>
+    <p>De plek voor alles rond supermoto: events, tips en community.</p>
+</section>
+
+<!-- Over ons Sectie -->
+<section id="about" class="section">
+    <h2>Over ons</h2>
+    <p>Supermoto Lifestyle is een community en platform voor iedereen die van supermoto houdt. Van tips en tricks tot evenementen en races, wij brengen de wereld van supermoto dichter bij jou.</p>
+</section>
+
+<!-- Galerij Sectie -->
+<section id="gallery" class="section">
+    <h2>Galerij</h2>
+    <div class="gallery">
+        <img src="images/supermoto1.jpg" alt="Supermoto foto 1">
+        <img src="images/supermoto2.jpg" alt="Supermoto foto 2">
+        <img src="images/supermoto3.jpg" alt="Supermoto foto 3">
+    </div>
+</section>
+
+<!-- Contact Sectie -->
+<section id="contact" class="section">
+    <h2>Contact</h2>
+    <form action="mailto:jouremail@example.com" method="post" enctype="text/plain">
+        <label for="name">Naam:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Bericht:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Verstuur</button>
+    </form>
+</section>
+
+<!-- Socials Sectie -->
+<section id="socials" class="section">
+    <h2>Volg ons op Socials</h2>
+    <p>
+        <a href="#" target="_blank">Instagram</a> | 
+        <a href="#" target="_blank">Facebook</a> | 
+        <a href="#" target="_blank">YouTube</a>
+    </p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2025 Supermoto Lifestyle</p>
+</footer>
+
+</body>
+</html>
+/* css/style.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #333;
+    scroll-behavior: smooth; /* scroll naar secties */
+}
+
+/* Header */
+header {
+    position: sticky;
+    top: 0;
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+/* Secties */
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.hero {
+    background: url('../images/supermoto-hero.jpg') center/cover no-repeat;
+    color: white;
+}
+
+/* Galerij */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.gallery img {
+    width: 30%;
+    border-radius: 5px;
+}
+
+/* Contact formulier */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: auto;
+}
+
+form input, form textarea, form button {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #555;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
