@@ -1,18 +1,103 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supermoto Lifestyle</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supermoto Life</title>
+
+<style>
+/* -------------------- BASIS -------------------- */
+body {
+    margin: 0;
+    background: #111;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* -------------------- HEADER -------------------- */
+header {
+    background: #000;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* NAV ITEMS */
+nav {
+    display: none;
+    flex-direction: column;
+    background: #000;
+    position: absolute;
+    top: 70px;
+    right: 10px;
+    padding: 10px;
+    border: 1px solid #444;
+}
+
+nav a {
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: #ff2a2a;
+}
+
+/* HAMBURGER */
+.hamburger {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* -------------------- SECTIES -------------------- */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+/* Kleuren */
+#home { background: #1abc9c; }
+#blog { background: #3498db; }
+#socials { background: #9b59b6; }
+#countdown { background: #e67e22; }
+#shop { background: #e74c3c; }
+
+/* SHOP ITEMS */
+.product {
+    background: rgba(0,0,0,0.3);
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 300px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+/* -------------------- FOOTER -------------------- */
+footer {
+    background: black;
+    padding: 20px;
+    text-align: center;
+}
+</style>
+
 </head>
 <body>
 
-<!-- Header / Hamburger-menu -->
 <header>
-    <div class="logo">Supermoto Lifestyle</div>
-    <div class="hamburger" id="hamburger">&#9776;</div>
-    <nav id="nav-menu">
+    <div class="logo">Supermoto Life</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <nav id="menu">
         <a href="#home">Home</a>
         <a href="#blog">Blog</a>
         <a href="#socials">Socials</a>
@@ -21,56 +106,74 @@
     </nav>
 </header>
 
-<!-- Home Sectie -->
-<section id="home" class="section" style="background-color:#1abc9c;">
-    <h2>Welkom bij Supermoto Lifestyle</h2>
-    <p>Alles over supermoto, events, tips en community.</p>
+<!-- HOME -->
+<section id="home">
+    <h1>Welkom bij Supermoto Life</h1>
+    <p>Dé plek voor supermoto fans! News, shop, blog, countdown & meer.</p>
 </section>
 
-<!-- Blog Sectie -->
-<section id="blog" class="section" style="background-color:#3498db;">
-    <h2>Blog</h2>
-    <article>
-        <h3>Tips voor beginners</h3>
-        <p>Leer de basis van supermoto rijden met onze tips.</p>
-    </article>
-    <article>
-        <h3>Supermoto events</h3>
-        <p>De komende races en evenementen die je niet mag missen.</p>
-    </article>
+<!-- BLOG -->
+<section id="blog">
+    <h1>Blog</h1>
+    <h3>Supermoto Event Tips</h3>
+    <p>Alles wat je moet weten om ready te zijn voor je volgende event.</p>
+    <br>
+    <h3>Supermoto Beginner Tricks</h3>
+    <p>Leer de basis skills om vooruit te komen!</p>
 </section>
 
-<!-- Socials Sectie -->
-<section id="socials" class="section" style="background-color:#9b59b6;">
-    <h2>Volg ons</h2>
+<!-- SOCIALS -->
+<section id="socials">
+    <h1>Volg Ons</h1>
     <p>
-        <a href="#" target="_blank">Instagram</a> | 
-        <a href="#" target="_blank">Facebook</a> | 
-        <a href="#" target="_blank">YouTube</a>
+        <a href="#" style="color:white;">Instagram</a> |
+        <a href="#" style="color:white;">TikTok</a> |
+        <a href="#" style="color:white;">YouTube</a>
     </p>
 </section>
 
-<!-- Countdown Sectie -->
-<section id="countdown" class="section" style="background-color:#e67e22;">
-    <h2>Live Countdown</h2>
-    <p id="countdown-text"></p>
+<!-- COUNTDOWN -->
+<section id="countdown">
+    <h1>Event Countdown</h1>
+    <h2 id="timer">Loading...</h2>
 </section>
 
-<!-- Shop Sectie -->
-<section id="shop" class="section" style="background-color:#e74c3c;">
-    <h2>Supermoto Shop</h2>
-    <p>Koop hier je accessoires, kleding en onderdelen.</p>
-    <ul>
-        <li>Helm - €120</li>
-        <li>Handschoenen - €40</li>
-        <li>Motorbanden - €250</li>
-    </ul>
+<!-- SHOP -->
+<section id="shop">
+    <h1>Supermoto Shop</h1>
+
+    <div class="product">🔥 Supermoto Handschoenen – €49</div>
+    <div class="product">🔥 Racing Helm – €199</div>
+    <div class="product">🔥 Exhaust Sticker Pack – €15</div>
 </section>
 
 <footer>
-    <p>© 2025 Supermoto Lifestyle</p>
+    © 2025 Supermoto Life
 </footer>
 
-<script src="js/script.js"></script>
+<script>
+/* HAMBURGER MENU */
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+/* COUNTDOWN */
+var targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
+
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = targetDate - now;
+
+    var days = Math.floor(distance / (1000*60*60*24));
+    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+});
+</script>
+
 </body>
 </html>
