@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supermoto Life</title>
+
+<style>
+/* ---------- FONTS ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* ---------- BASIS ---------- */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #0a0a0a;
+    color: white;
+    scroll-behavior: smooth;
+}
+
+/* ---------- HEADER ---------- */
+header {
+    background: #000;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    border-bottom: 2px solid red;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: red;
+}
+
+/* NAV MENU */
+nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.95);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 15px;
+    border: 1px solid red;
+    border-radius: 10px;
+}
+
+nav a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: red;
+}
+
+/* Hamburger */
+.hamburger {
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+}
+
+/* ---------- HERO BANNER ---------- */
+.hero {
+    background: url('https://i.imgur.com/O2Vh5Hu.jpeg');
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 3px 3px 8px black;
+}
+
+.hero h1 {
+    font-size: 40px;
+    font-weight: 700;
+    color: red;
+}
+
+/* ---------- SECTIES ---------- */
+section {
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 2px solid #222;
+}
+
+/* TITELS */
+h1 {
+    color: red;
+}
+
+/* BLOG */
+.blog-post {
+    background: #111;
+    margin: 15px auto;
+    max-width: 600px;
+    padding: 20px;
+    border-left: 4px solid red;
+    border-radius: 5px;
+}
+
+/* SOCIALS */
+.socials a {
+    font-size: 22px;
+    color: white;
+    margin: 10px;
+    text-decoration: none;
+}
+
+.socials a:hover {
+    color: red;
+}
+
+/* COUNTDOWN */
+#timer {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: white;
+}
+
+/* SHOP */
+.product {
+    background: #151515;
+    padding: 20px;
+    margin: 10px auto;
+    border: 2px solid red;
+    max-width: 350px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/* FOOTER */
+footer {
+    padding: 20px;
+    background: black;
+    text-align: center;
+    border-top: 2px solid red;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+    <div class="logo">SUPERMOTO LIFE</div>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <nav id="menu">
+        <a href="#home">Home</a>
+        <a href="#blog">Blog</a>
+        <a href="#socials">Socials</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#shop">Shop</a>
+    </nav>
+</header>
+
+<div class="hero" id="home">
+    <h1>LIVE FAST • RIDE HARD</h1>
+</div>
+
+<!-- BLOG -->
+<section id="blog">
+    <h1>Blog</h1>
+
+    <div class="blog-post">
+        <h2>🔥 Supermoto Riding Tips</h2>
+        <p>Leer hoe je beter bochten neemt, slidings controleert en sneller wordt.</p>
+    </div>
+
+    <div class="blog-post">
+        <h2>🏁 Nieuwe Events 2025</h2>
+        <p>De beste supermoto-meetups, races en stuntshows van dit jaar.</p>
+    </div>
+</section>
+
+<!-- SOCIALS -->
+<section id="socials">
+    <h1>Volg Ons</h1>
+    <div class="socials">
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">TikTok</a>
+        <a href="#" target="_blank">YouTube</a>
+    </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section id="countdown">
+    <h1>Volgende Event</h1>
+    <h2 id="timer">Loading...</h2>
+</section>
+
+<!-- SHOP -->
+<section id="shop">
+    <h1>Supermoto Shop</h1>
+
+    <div class="product">🔥 Supermoto Gloves — €49</div>
+    <div class="product">🔥 Racing Helmet — €199</div>
+    <div class="product">🔥 Exhaust Sticker Pack — €15</div>
+</section>
+
+<footer>
+    © 2025 Supermoto Life — Ride or Die 🏍️🔥
+</footer>
+
+<script>
+/* ---------- HAMBURGER MENU ---------- */
+function toggleMenu() {
+    var menu = document.getElementById("menu");
+    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+}
+
+/* ---------- COUNTDOWN ---------- */
+var targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
+
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = targetDate - now;
+
+    var days = Math.floor(distance / (1000*60*60*24));
+    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    var seconds = Math.floor((distance % (1000*60)) / 1000);
+
+    document.getElementById("timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+});
+</script>
+
+</body>
+</html>
