@@ -6,55 +6,53 @@
 <title>Supermoto Life</title>
 
 <style>
-/* ---------- FONTS ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-/* ---------- BASIS ---------- */
 body {
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Arial, sans-serif;
     background: #0a0a0a;
     color: white;
-    scroll-behavior: smooth;
 }
 
-/* ---------- HEADER ---------- */
+/* HEADER */
 header {
-    background: #000;
-    padding: 15px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: black;
+    padding: 15px 20px;
+    border-bottom: 2px solid red;
     position: sticky;
     top: 0;
-    z-index: 999;
-    border-bottom: 2px solid red;
 }
 
 .logo {
     font-size: 24px;
-    font-weight: 700;
     color: red;
+    font-weight: bold;
 }
 
-/* NAV MENU */
+.hamburger {
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+}
+
+/* MENU */
 nav {
     display: none;
     flex-direction: column;
-    background: rgba(0,0,0,0.95);
+    background: black;
     position: absolute;
     top: 70px;
     right: 20px;
-    padding: 15px;
     border: 1px solid red;
     border-radius: 10px;
 }
 
 nav a {
-    color: white;
-    padding: 10px;
+    padding: 12px;
     text-decoration: none;
-    display: block;
+    color: white;
     font-weight: bold;
 }
 
@@ -62,95 +60,43 @@ nav a:hover {
     color: red;
 }
 
-/* Hamburger */
-.hamburger {
-    font-size: 32px;
-    cursor: pointer;
-    color: white;
-}
-
-/* ---------- HERO BANNER ---------- */
-.hero {
-    background: url('https://i.imgur.com/O2Vh5Hu.jpeg');
-    height: 60vh;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-shadow: 3px 3px 8px black;
-}
-
-.hero h1 {
-    font-size: 40px;
-    font-weight: 700;
-    color: red;
-}
-
-/* ---------- SECTIES ---------- */
-section {
-    padding: 80px 20px;
+/* TABS */
+.tab-content {
+    display: none;
+    padding: 50px 20px;
     text-align: center;
-    border-top: 2px solid #222;
 }
 
-/* TITELS */
+/* VISIBLE TAB */
+.active {
+    display: block !important;
+}
+
+/* TITLES */
 h1 {
     color: red;
 }
 
-/* BLOG */
-.blog-post {
-    background: #111;
-    margin: 15px auto;
-    max-width: 600px;
-    padding: 20px;
-    border-left: 4px solid red;
-    border-radius: 5px;
-}
-
-/* SOCIALS */
-.socials a {
-    font-size: 22px;
-    color: white;
-    margin: 10px;
-    text-decoration: none;
-}
-
-.socials a:hover {
-    color: red;
-}
-
-/* COUNTDOWN */
-#timer {
-    font-size: 40px;
-    font-weight: bold;
-    margin-top: 20px;
-    color: white;
-}
-
 /* SHOP */
 .product {
-    background: #151515;
-    padding: 20px;
-    margin: 10px auto;
+    background: #111;
     border: 2px solid red;
+    border-radius: 6px;
+    padding: 20px;
+    margin: 15px auto;
     max-width: 350px;
-    border-radius: 10px;
-    font-size: 20px;
 }
 
 /* FOOTER */
 footer {
+    text-align: center;
     padding: 20px;
     background: black;
-    text-align: center;
     border-top: 2px solid red;
 }
 </style>
 
 </head>
-
 <body>
 
 <header>
@@ -158,80 +104,94 @@ footer {
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
     <nav id="menu">
-        <a href="#home">Home</a>
-        <a href="#blog">Blog</a>
-        <a href="#socials">Socials</a>
-        <a href="#countdown">Countdown</a>
-        <a href="#shop">Shop</a>
+        <a onclick="openTab('home')">Home</a>
+        <a onclick="openTab('blog')">Blog</a>
+        <a onclick="openTab('socials')">Socials</a>
+        <a onclick="openTab('countdown')">Countdown</a>
+        <a onclick="openTab('shop')">Shop</a>
+        <a onclick="openTab('contact')">Contact</a>
     </nav>
 </header>
 
-<div class="hero" id="home">
-    <h1>LIVE FAST • RIDE HARD</h1>
+<!-- HOME TAB -->
+<div id="home" class="tab-content active">
+    <h1>Welkom bij Supermoto Life</h1>
+    <p>Dé lifestyle site voor supermoto riders 🔥</p>
 </div>
 
-<!-- BLOG -->
-<section id="blog">
+<!-- BLOG TAB -->
+<div id="blog" class="tab-content">
     <h1>Blog</h1>
+    <p>🔥 Nieuwe posts binnenkort online!</p>
+    <p>Hier kan je veel tekst toevoegen.</p>
+</div>
 
-    <div class="blog-post">
-        <h2>🔥 Supermoto Riding Tips</h2>
-        <p>Leer hoe je beter bochten neemt, slidings controleert en sneller wordt.</p>
-    </div>
-
-    <div class="blog-post">
-        <h2>🏁 Nieuwe Events 2025</h2>
-        <p>De beste supermoto-meetups, races en stuntshows van dit jaar.</p>
-    </div>
-</section>
-
-<!-- SOCIALS -->
-<section id="socials">
+<!-- SOCIALS TAB -->
+<div id="socials" class="tab-content">
     <h1>Volg Ons</h1>
-    <div class="socials">
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">TikTok</a>
-        <a href="#" target="_blank">YouTube</a>
-    </div>
-</section>
+    <p><a href="#" style="color:white;">Instagram</a></p>
+    <p><a href="#" style="color:white;">TikTok</a></p>
+    <p><a href="#" style="color:white;">YouTube</a></p>
+</div>
 
-<!-- COUNTDOWN -->
-<section id="countdown">
-    <h1>Volgende Event</h1>
+<!-- COUNTDOWN TAB -->
+<div id="countdown" class="tab-content">
+    <h1>Event Countdown</h1>
     <h2 id="timer">Loading...</h2>
-</section>
+</div>
 
-<!-- SHOP -->
-<section id="shop">
-    <h1>Supermoto Shop</h1>
+<!-- SHOP TAB -->
+<div id="shop" class="tab-content">
+    <h1>Shop</h1>
+    <div class="product">🔥 Supermoto Handschoenen – €49</div>
+    <div class="product">🔥 Racing Helm – €199</div>
+    <div class="product">🔥 Sticker Pack – €15</div>
+</div>
 
-    <div class="product">🔥 Supermoto Gloves — €49</div>
-    <div class="product">🔥 Racing Helmet — €199</div>
-    <div class="product">🔥 Exhaust Sticker Pack — €15</div>
-</section>
+<!-- CONTACT TAB -->
+<div id="contact" class="tab-content">
+    <h1>Contact</h1>
+    <p>Mail ons: <br><strong>supermoto@life.com</strong></p>
+</div>
 
 <footer>
-    © 2025 Supermoto Life — Ride or Die 🏍️🔥
+    © 2025 Supermoto Life
 </footer>
 
 <script>
-/* ---------- HAMBURGER MENU ---------- */
+/* HAMBURGER MENU */
 function toggleMenu() {
-    var menu = document.getElementById("menu");
+    let menu = document.getElementById("menu");
     menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 
-/* ---------- COUNTDOWN ---------- */
-var targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
+/* OPEN TABS */
+function openTab(tabName) {
+    let tabs = document.getElementsByClassName("tab-content");
 
-setInterval(function() {
-    var now = new Date().getTime();
-    var distance = targetDate - now;
+    // Hide all tabs
+    for (let t of tabs) {
+        t.classList.remove("active");
+    }
 
-    var days = Math.floor(distance / (1000*60*60*24));
-    var hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    var minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    var seconds = Math.floor((distance % (1000*60)) / 1000);
+    // Show selected
+    document.getElementById(tabName).classList.add("active");
+
+    // Close menu after click
+    document.getElementById("menu").style.display = "none";
+}
+
+/* COUNTDOWN TIMER */
+let targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
+
+setInterval(function () {
+    let now = new Date().getTime();
+    let distance = targetDate - now;
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     document.getElementById("timer").innerHTML =
         days + "d " + hours + "h " + minutes + "m " + seconds + "s";
