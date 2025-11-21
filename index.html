@@ -1,237 +1,72 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Supermoto Life</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: white;
-    overflow-x: hidden;
-}
-
-/* HEADER */
-header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: black;
-    padding: 15px 20px;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 2px solid red;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: red;
-}
-
-.hamburger {
-    font-size: 32px;
-    cursor: pointer;
-    color: white;
-}
-
-/* NAV MENU */
-nav {
-    display: none;
-    flex-direction: column;
-    background: rgba(0,0,0,0.95);
-    position: fixed;
-    top: 60px;
-    right: 20px;
-    border: 1px solid red;
-    border-radius: 10px;
-    z-index: 1001;
-}
-
-nav a {
-    padding: 12px 20px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    color: red;
-}
-
-/* FULL SCREEN TABS */
-.tab-content {
-    width: 100vw;
-    height: 100vh;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.tab-content h1 {
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-/* ACTIVE TAB */
-.active {
-    display: flex !important;
-}
-
-/* KLEUREN PER TAB */
-#home { background: #1abc9c; }
-#blog { background: #3498db; }
-#socials { background: #9b59b6; }
-#countdown { background: #e67e22; }
-#shop { background: #e74c3c; }
-#contact { background: #2ecc71; }
-#media { background: #34495e; }
-
-/* SHOP ITEMS */
-.product {
-    background: rgba(0,0,0,0.4);
-    margin: 10px auto;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 400px;
-    font-size: 22px;
-}
-
-/* SOCIALS LINKS */
-.socials a {
-    color: white;
-    font-size: 24px;
-    margin: 0 15px;
-    text-decoration: none;
-}
-.socials a:hover { color: red; }
-
-/* MEDIA TAB */
-.media-gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-}
-
-.media-gallery img, .media-gallery video {
-    max-width: 300px;
-    border-radius: 10px;
-    border: 2px solid red;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-    <div class="logo">SUPERMOTO LIFE</div>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <nav id="menu">
-        <a onclick="openTab('home')">Home</a>
-        <a onclick="openTab('blog')">Blog</a>
-        <a onclick="openTab('socials')">Socials</a>
-        <a onclick="openTab('countdown')">Countdown</a>
-        <a onclick="openTab('shop')">Shop</a>
-        <a onclick="openTab('media')">Media</a>
-        <a onclick="openTab('contact')">Contact</a>
-    </nav>
-</header>
-
-<!-- FULL SCREEN TABS -->
-<div id="home" class="tab-content active">
-    <h1>Welkom bij Supermoto Life</h1>
-    <p>Dé lifestyle site voor supermoto riders 🔥</p>
-</div>
-
-<div id="blog" class="tab-content">
-    <h1>Blog</h1>
-    <p>🔥 Nieuwe posts binnenkort online!</p>
-</div>
-
-<div id="socials" class="tab-content">
-    <h1>Socials</h1>
-    <div class="socials">
-        <a href="#" target="_blank">Instagram</a>
-        <a href="#" target="_blank">TikTok</a>
-        <a href="#" target="_blank">YouTube</a>
-    </div>
-</div>
-
-<div id="countdown" class="tab-content">
-    <h1>Event Countdown</h1>
-    <h2 id="timer">Loading...</h2>
-</div>
-
 <div id="shop" class="tab-content">
     <h1>Shop</h1>
-    <div class="product">🔥 Supermoto Handschoenen – €49</div>
-    <div class="product">🔥 Racing Helm – €199</div>
-    <div class="product">🔥 Sticker Pack – €15</div>
-</div>
-
-<!-- MEDIA TAB -->
-<div id="media" class="tab-content">
-    <h1>Media</h1>
     <div class="media-gallery">
-        <!-- FOTO'S -->
-        <img src="https://i.imgur.com/O2Vh5Hu.jpeg" alt="Supermoto Foto">
-        <img src="https://i.imgur.com/3s0c6Kx.jpeg" alt="Supermoto Foto 2">
-        <!-- VIDEO'S -->
-        <video controls>
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-</div>
+        <!-- PRODUCT 1 -->
+        <div class="product">
+            <img src="https://i.imgur.com/O2Vh5Hu.jpeg" alt="Handschoenen" onclick="openLightbox(this)">
+            <h2>Supermoto Handschoenen</h2>
+            <p>Bescherming en grip tijdens het rijden.</p>
+            <p>Prijs: €49</p>
+            <button onclick="openOrderForm('Supermoto Handschoenen')">Bestel / Contact</button>
+        </div>
 
-<div id="contact" class="tab-content">
-    <h1>Contact</h1>
-    <p>Email: <strong>dj.zinix@gmail.com</strong></p>
+        <!-- PRODUCT 2 -->
+        <div class="product">
+            <img src="https://i.imgur.com/3s0c6Kx.jpeg" alt="Racing Helm" onclick="openLightbox(this)">
+            <h2>Racing Helm</h2>
+            <p>Veiligheid en stijl in één helm.</p>
+            <p>Prijs: €199</p>
+            <button onclick="openOrderForm('Racing Helm')">Bestel / Contact</button>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product">
+            <img src="https://i.imgur.com/8f3ZQxB.jpeg" alt="Sticker Pack" onclick="openLightbox(this)">
+            <h2>Sticker Pack</h2>
+            <p>Maak je motor helemaal eigen met stickers.</p>
+            <p>Prijs: €15</p>
+            <button onclick="openOrderForm('Sticker Pack')">Bestel / Contact</button>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);justify-content:center;align-items:center;z-index:10000;">
+        <img id="lightbox-img" src="" style="max-width:90%;max-height:90%;border:5px solid red;border-radius:10px;">
+        <span style="position:absolute;top:20px;right:40px;font-size:50px;color:white;cursor:pointer;" onclick="closeLightbox()">×</span>
+    </div>
+
+    <!-- BESTEL FORMULIER -->
+    <div id="order-form" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:black;padding:30px;border:2px solid red;border-radius:15px;z-index:10001;width:90%;max-width:400px;">
+        <h2>Bestel Product</h2>
+        <p id="product-name"></p>
+        <form action="mailto:supermoto@life.com" method="post" enctype="text/plain">
+            <input type="hidden" id="form-product" name="Product">
+            <input type="text" name="Naam" placeholder="Jouw Naam" required style="width:100%;padding:8px;margin:5px 0;">
+            <input type="email" name="Email" placeholder="Jouw Email" required style="width:100%;padding:8px;margin:5px 0;">
+            <textarea name="Bericht" placeholder="Extra bericht" style="width:100%;padding:8px;margin:5px 0;"></textarea>
+            <button type="submit" style="width:100%;padding:10px;background:red;color:white;border:none;border-radius:5px;margin-top:5px;">Verstuur</button>
+            <button type="button" onclick="closeOrderForm()" style="width:100%;padding:10px;background:#555;color:white;border:none;border-radius:5px;margin-top:5px;">Annuleer</button>
+        </form>
+    </div>
 </div>
 
 <script>
-/* HAMBURGER MENU */
-function toggleMenu() {
-    let menu = document.getElementById("menu");
-    menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+/* LIGHTBOX FUNCTIES */
+function openLightbox(img) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = img.src;
+}
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
 }
 
-/* OPEN TAB */
-function openTab(tabName) {
-    let tabs = document.getElementsByClassName("tab-content");
-    for (let t of tabs) {
-        t.classList.remove("active");
-    }
-    document.getElementById(tabName).classList.add("active");
-    document.getElementById("menu").style.display = "none";
+/* BESTEL FORMULIER FUNCTIES */
+function openOrderForm(productName) {
+    document.getElementById('order-form').style.display = 'block';
+    document.getElementById('product-name').innerText = productName;
+    document.getElementById('form-product').value = productName;
 }
-
-/* COUNTDOWN TIMER */
-let targetDate = new Date("Dec 31, 2025 00:00:00").getTime();
-setInterval(function () {
-    let now = new Date().getTime();
-    let distance = targetDate - now;
-
-    let days = Math.floor(distance / (1000*60*60*24));
-    let hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    let seconds = Math.floor((distance % (1000*60)) / 1000);
-
-    document.getElementById("timer").innerHTML =
-        days + "100d " + hours + "h " + minutes + "m " + seconds + "s";
-}, 1000);
+function closeOrderForm() {
+    document.getElementById('order-form').style.display = 'none';
+}
 </script>
-
-</body>
-</html>
-
